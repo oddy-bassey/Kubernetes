@@ -1,6 +1,8 @@
 # Kubernetes
 Kubernetes Mastery: Hands-On Lessons From A Docker Captain, Bret Fisher
 
+<details><summary>Kubernetes Architecture</summary>
+
 ## Kubernetes Architecture
 ![architecture1](docs/images/architecture.png)
 
@@ -21,3 +23,49 @@ The above shpod namespace affects DNS as well. If you need to curl or ping a Ser
 An ``` attach ``` command will show the virtual console of a pod (like a tty), so multiple ``` attach ``` commands in multiple terminal windows will show the same thing because they are both looking at the console output. For your 2nd terminal, you can use an ``` exec ``` command that will start a new shell process in the existing container. This works **exactly** the same way as Docker attach and exec commands: <br><br>
 1st window, attach: <br> ``` kubectl attach --namespace=shpod -ti shpod ``` <br><br>
 2nd window, create a new bash shell: <br> ``` kubectl exec --namespace=shpod -ti shpod -- bash -l ```
+
+</details>
+
+<details><summary>First Contact with Kubectl</summary>
+
+## Getting the nodes
+The below command returns an abtracted information about the list of nodes <br>
+- ``` kubectl get no ``` or ``` kubectl get node ``` or ``` kubectl get nodes ```
+
+## Obtaining machine-readeable output
+**Note:** ``` Kubectl get ``` can output **JSON**, **YAML**, or be directly formatted <br>
+- Give us more info about the nodes: <br>
+``` kubectl get nodes -o wide  ``` or ``` kubectl get nodes node1 -o wide  ```
+- Let's have some YAML <br>
+``` kubectl get nodes -o yaml ```
+
+## (AB)using ```kubectl``` and ```jq```
+- Show the capcity of all our nodes as a stream of JSON objects: <br>
+``` kubectl get nodes -o json | jq ".items[] | {name:.metadata.name} + .status.capacity"```
+
+## For more comprehensive overview, we can use ``` kubectl describe ``` instead
+**Note:** Kindly observe that this follows the pattern: <br> ``` kubectl describe resource-type-name/resource-name ``` or ``` kubectl describe resource-type-name resource-name ```
+- ``` kubectl describe node/node1 ``` or ``` kubectl describe node node1 ```
+
+## Exploring types and definitions
+- We can list all available resource types by running: ``` kubectl api-resources ```
+- We can view the dfefinition for a resource type with: ``` kubectl explain type ```
+- we can view the definition for a field in a resource, for instance: ``` kubectl explain node.spec ```
+- Or get the list of all fields and subfields" ``` kubectl explain node --recursive ```
+
+## Introspection vs. Documentation
+- We can access the same information by reading the [API documentation]()
+- The API documentation is usually easier to read but
+  - it wont show custom types (like Custom Resource Definitions)
+  - we need to make sure that we look at the correct version
+- ``` kubectl api-resources ``` and ``` kubectl explain ``` performs introspection (they communicate with the API server and obtain the exact type definition)
+
+## Type Names
+- The most common resource names have three forms:
+  - singular (e.g. ``` node ```, ``` service ```, ``` deployment ```)
+  - plural (e.g. ``` nodes ```, ``` services ```, ``` deployments ```)
+  - short (e.g. ``` no ```, ``` svc ```, ``` deploy ```)
+- Some resources do not have a short name
+- ``` Endpoints ``` only have a plural form (because even a single ``` Endpoints ``` resource is actually a list of endpoints)
+
+</details>
