@@ -1,7 +1,7 @@
-# Kubernetes
+# <span style="color: #0066FF">Kubernetes</span>
 Kubernetes Mastery: Hands-On Lessons From A Docker Captain, Bret Fisher
 
-<details><summary>Kubernetes Architecture</summary>
+<details><summary><span style="color: #009900">Kubernetes Architecture</span></summary>
 
 ## Kubernetes Architecture
 ![architecture1](docs/images/architecture.png)
@@ -26,7 +26,7 @@ An ``` attach ``` command will show the virtual console of a pod (like a tty), s
 
 </details>
 
-<details><summary>First Contact with Kubectl</summary>
+<details><summary><span style="color: #009900">First Contact with Kubectl</span></summary>
 
 ## Getting the nodes
 The below command returns an abtracted information about the list of nodes <br>
@@ -48,7 +48,8 @@ The below command returns an abtracted information about the list of nodes <br>
 - ``` kubectl describe node/node1 ``` or ``` kubectl describe node node1 ```
 
 ## Exploring types and definitions
-- We can list all available resource types by running: ``` kubectl api-resources ```
+- We can list all available resource types by running: ``` kubectl api-resources ``` (in Kubernetes 1.10 and prior, this command used to be ``` kubectl get ```)
+- We can list one or more resources in the cluster: ``` kubectl get resource-type ``` (this resources can be Pods, Services, Deployments etc) pr ``` kubectl get resource-type resource-name ``` (resource-name is optional and specifies the name of the particular resource)
 - We can view the dfefinition for a resource type with: ``` kubectl explain type ```
 - we can view the definition for a field in a resource, for instance: ``` kubectl explain node.spec ```
 - Or get the list of all fields and subfields" ``` kubectl explain node --recursive ```
