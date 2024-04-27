@@ -1,4 +1,4 @@
-# <span style="color: #0066FF">Kubernetes</span>
+![architecture1](docs/images/kubernetes.png)
 Kubernetes Mastery: Hands-On Lessons From A Docker Captain, Bret Fisher
 
 <details><summary><span style="color: #009900">Kubernetes Architecture</span></summary>
@@ -68,5 +68,27 @@ The below command returns an abtracted information about the list of nodes <br>
   - short (e.g. ``` no ```, ``` svc ```, ``` deploy ```)
 - Some resources do not have a short name
 - ``` Endpoints ``` only have a plural form (because even a single ``` Endpoints ``` resource is actually a list of endpoints)
+
+## Namespaces
+Namespaces allows us to segregate resources.
+- ``` kubect get namespaces ```
+- ``` kubect get namespace ```
+- ``` kubect get ns ```
+
+## Accessing namespaces
+- By default, ``` kubectl ``` uses the ``` default ``` namespace
+- We can see resources in all namespaces with ``` --all-namespaces ``` (since kubernetes 1.14, we can also use ``` -A ``` as a shorter version)
+
+## What are all these conterol plane pods?
+- ``` etcd ``` is our etcd server
+- ``` kube-apiserver ``` is the API server
+- ``` kube-controller-manager ``` and ``` kube-scheduler ``` are other control plane components
+- ``` coredns ``` provides DNS-based service discovery (replacing ``` kube-dns ``` as of 1.11)
+- ``` kube-proxy ``` is the (per-node) component managing the network port mappings and such
+- ``` <net name> ``` is the optional (per node) component managing the network overlay
+- the ``` READY ``` column indicates the number of containers in each pod <br>
+**Note:**
+- this only shows containers, you won't see host svcs (e.g. mcirok8s)
+- you may see different namespaces depending on setup
 
 </details>
