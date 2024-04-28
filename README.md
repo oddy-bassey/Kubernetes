@@ -79,7 +79,7 @@ Namespaces allows us to segregate resources.
 - By default, ``` kubectl ``` uses the ``` default ``` namespace
 - We can see resources in all namespaces with ``` --all-namespaces ``` (since kubernetes 1.14, we can also use ``` -A ``` as a shorter version)
 
-## What are all these conterol plane pods?
+## What are all these control plane pods?
 - ``` etcd ``` is our etcd server
 - ``` kube-apiserver ``` is the API server
 - ``` kube-controller-manager ``` and ``` kube-scheduler ``` are other control plane components
@@ -91,4 +91,19 @@ Namespaces allows us to segregate resources.
 - this only shows containers, you won't see host svcs (e.g. mcirok8s)
 - you may see different namespaces depending on setup
 
+## Newer namespaces
+``` kube-public ``` is created by our installer & **used for security bootstrapping** <br>example: list the pods in ```kube-public``` namespace <br>
+- ``` kubectl-n kube-public get pods ```
+
+The only interesting object in ``` kube-public ``` is a ConfigMap named ``` cluster-info ```
+
+```
+Example:
+- List ConfigMap objects:
+  kubct -n kube-public get ConfigMap
+
+- Inpect cluster-info
+  kubectl -n kube-public get ConfigMap cluster-info -o yaml
+```
+Note the ``` selfLink ``` URL: ``` /api/v1/namespaces/kube-public/configmaps/clusterinfo ``` we can use that (later in ``` kubectl context ``` lectures)
 </details>
