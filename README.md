@@ -167,3 +167,13 @@ For more info on the create deployment options, check out the help at ```kubectl
 ![starting a simple pod](docs/images/sect6-10.png)
 
 </details>
+
+<details><summary><span style="color: #009900">Cron jobs and Resource Creation Options</span></summary>
+
+## Kubectl Run Cronjob
+![starting a simple pod](docs/images/sect7-1.png)
+![starting a simple pod](docs/images/sect7-2.png)
+![starting a simple pod](docs/images/sect7-3.png)
+![starting a simple pod](docs/images/sect7-4.png)
+
+</details>
