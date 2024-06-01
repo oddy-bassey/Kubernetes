@@ -176,4 +176,8 @@ For more info on the create deployment options, check out the help at ```kubectl
 ![starting a simple pod](docs/images/sect7-3.png)
 ![starting a simple pod](docs/images/sect7-4.png)
 
+## Resource Creation and Run Changes
+![starting a simple pod](docs/images/sect7-5.png)
+![starting a simple pod](docs/images/sect7-6.png)
+
 </details>
