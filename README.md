@@ -115,4 +115,44 @@ Note the ``` selfLink ``` URL: ``` /api/v1/namespaces/kube-public/configmaps/clu
 ![starting a simple pod](docs/images/sect6-2.png)
 ![starting a simple pod](docs/images/sect6-3.png)
 ![starting a simple pod](docs/images/sect6-4.png)
+
+## 1.18 Changes to Kubectl Run
+**Creating Pods vs. Deployments in 1.18+**
+
+**Starting in Kubernetes version 1.18, the** ```kubectl run``` **command only does one thing: create single pods.** There were many reasons for this, but the big ones were to reduce the complexity of how the ```run``` command worked and to move other resource creation to the ```kubectl create``` command. The idea is that ```kubectl run``` is now similar to ```docker run```. It creates a single pod, where ```docker run``` creates a single container.
+
+In the previous and next Lectures, I'm using Kubernetes 1.17. That means my kubectl run command would create a deployment resource, so for you to follow along in the next few lectures, you'll also need to create a deployment with the create command like this.
+**Please run this command now, to prepare for the next few lectures**
+```
+kubectl create deployment pingpong --image alpine -- ping 1.1.1.1
+```
+
+That's effectively doing what you watched me do in older Kubernetes versions in the previous lecture with the old ```run``` command.  In the next few Lectures, we'll use the scale command and others that expect the ```deploy/pingpong``` resource to exist, so please run that command above.
+
+**Cleanup**: We won't need the pod you created with the kubectl run command in the previous Lecture, so you can delete that resource with ```kubectl delete pod/pingpong```
+
+-------------------------------------------------------------
+## More information on this change and how it affects commands
+
+Now that everyone's finally using newer versions like 1.24+ I'm replacing these videos. You can follow along on my course updates GitHub project: https://bret.show/courseupdates
+
+Depending on which version of Kubernetes you have installed, you'll need to decide how to create objects. Here's a cheat sheet for how old commands should be used with the 1.18+ changes.
+### Create a single pod in 1.18+
+
+```kubectl run nginx --image nginx```
+### Create a single pod with a custom command in 1.18+
+
+```kubectl run pingpong --image alpine --command -- ping 1.1.1.1```
+### Create a deployment in 1.18+
+
+```kubectl create deployment nginx --image nginx```
+### Create a deployment with a custom command in 1.18+
+
+```kubectl create deployment pingpong --image alpine -- ping 1.1.1.1```
+
+Notice the double dash -- which separates the kubectl command options from the COMMAND you want to override when starting the containers.
+
+Also notice that ```run``` requires the ```--command -- <cmd> <arg>``` while the ```create deployment``` just needs ```-- <cmd> <arg>``` at the end.
+
+For more info on the create deployment options, check out the help at ```kubectl create deployment --help``` 
 </details>
