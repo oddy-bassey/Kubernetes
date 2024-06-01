@@ -132,7 +132,7 @@ That's effectively doing what you watched me do in older Kubernetes versions in 
 **Cleanup**: We won't need the pod you created with the kubectl run command in the previous Lecture, so you can delete that resource with ```kubectl delete pod/pingpong```
 
 -------------------------------------------------------------
-## More information on this change and how it affects commands
+### More information on this change and how it affects commands
 
 Now that everyone's finally using newer versions like 1.24+ I'm replacing these videos. You can follow along on my course updates GitHub project: https://bret.show/courseupdates
 
@@ -155,4 +155,10 @@ Notice the double dash -- which separates the kubectl command options from the C
 Also notice that ```run``` requires the ```--command -- <cmd> <arg>``` while the ```create deployment``` just needs ```-- <cmd> <arg>``` at the end.
 
 For more info on the create deployment options, check out the help at ```kubectl create deployment --help``` 
+
+## Kubectl Logs
+![starting a simple pod](docs/images/sect6-5.png)
+![starting a simple pod](docs/images/sect6-6.png)
+![starting a simple pod](docs/images/sect6-7.png)
+
 </details>
