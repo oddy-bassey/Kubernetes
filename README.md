@@ -105,5 +105,14 @@ Example:
 - Inpect cluster-info
   kubectl -n kube-public get ConfigMap cluster-info -o yaml
 ```
-Note the ``` selfLink ``` URL: ``` /api/v1/namespaces/kube-public/configmaps/clusterinfo ``` we can use that (later in ``` kubectl context ``` lectures)
+Note the ``` selfLink ``` URL: ``` /api/v1/namespaces/kube-public/configmaps/clusterinfo ``` we can use that (later in ``` kubectl context ``` lectures)!
+</details>
+
+<details><summary><span style="color: #009900">Your First Deployment</span></summary>
+
+## Your first deployment with Kubectl
+![starting a simple pod](docs/images/sect6-1.png)
+![starting a simple pod](docs/images/sect6-2.png)
+![starting a simple pod](docs/images/sect6-3.png)
+![starting a simple pod](docs/images/sect6-4.png)
 </details>
