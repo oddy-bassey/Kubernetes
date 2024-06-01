@@ -161,4 +161,9 @@ For more info on the create deployment options, check out the help at ```kubectl
 ![starting a simple pod](docs/images/sect6-6.png)
 ![starting a simple pod](docs/images/sect6-7.png)
 
+## Deleting Pods and Watching The Effects
+![starting a simple pod](docs/images/sect6-8.png)
+![starting a simple pod](docs/images/sect6-9.png)
+![starting a simple pod](docs/images/sect6-10.png)
+
 </details>
